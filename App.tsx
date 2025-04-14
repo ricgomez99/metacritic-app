@@ -1,17 +1,16 @@
-import { StyleSheet, Image, View, Text, Button } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-
-const URL =
-  "https://images2.medimops.eu/product/933395/M02302056388-source.jpg";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import Main from "./components/Main";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Image style={styles.image} source={{ uri: URL }} />
-      <Button onPress={() => alert("Hello!")} title="Press here" />
-      <Text style={styles.title}>Hello World!</Text>
-    </View>
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        <StatusBar style="auto" />
+        <Main />
+      </View>
+    </SafeAreaProvider>
   );
 }
 
@@ -21,15 +20,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-
-  title: {
-    color: "#111",
-  },
-
-  image: {
-    width: 215,
-    height: 294,
-    resizeMode: "center",
+    paddingHorizontal: 12,
   },
 });
