@@ -3,7 +3,7 @@ import { AnimatedCardProps } from "../types/gameCardTypes";
 import { useEffect, useRef } from "react";
 import GameCard from "./GameCard";
 
-export function AnimatedCard({ index, title, url }: AnimatedCardProps) {
+export function AnimatedCard({ index, title, url, score }: AnimatedCardProps) {
   const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export function AnimatedCard({ index, title, url }: AnimatedCardProps) {
 
   return (
     <Animated.View style={{ opacity }}>
-      <GameCard title={title} url={url} />
+      <GameCard title={title} url={url} score={score} />
     </Animated.View>
   );
 }

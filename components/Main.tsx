@@ -1,7 +1,6 @@
 import { StyleSheet, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useFilms from "../hooks/useFilms";
-import GameCard from "./GameCard";
 import Loader from "./Loader";
 import { Logo } from "./Logo";
 import { AnimatedCard } from "./AnimatedCard";
@@ -23,6 +22,7 @@ export default function Main() {
                 index={index}
                 title={item.name}
                 url={item.background_image}
+                score={item.metacritic}
               />
             )}
             keyExtractor={(item) => item.slug}

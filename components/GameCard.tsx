@@ -2,13 +2,15 @@ import { View, Text } from "react-native";
 import { Image } from "expo-image";
 import { StyleSheet } from "react-native";
 import { CardProps } from "../types/gameCardTypes";
+import Score from "./Score";
 
-export default function GameCard({ title, url }: CardProps) {
+export default function GameCard({ title, url, score }: CardProps) {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={url} />
       <View style={styles.text_container}>
         <Text>{title}</Text>
+        <Score score={score} maxScore={100} />
       </View>
     </View>
   );
