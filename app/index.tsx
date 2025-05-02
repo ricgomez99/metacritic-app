@@ -1,5 +1,5 @@
-import Main from "../components/Main";
+import App from "../App";
 
 export default function Index() {
-  return <Main />;
+  return <App />;
 }

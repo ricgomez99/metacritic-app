@@ -2,7 +2,6 @@ import { StyleSheet, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useFilms from "../hooks/useFilms";
 import Loader from "./Loader";
-import { Logo } from "./Logo";
 import { AnimatedCard } from "./AnimatedCard";
 
 export default function Main() {
@@ -14,7 +13,6 @@ export default function Main() {
         <Loader />
       ) : (
         <SafeAreaView style={styles.container}>
-          <Logo />
           <FlatList
             data={films}
             renderItem={({ item, index }) => (
@@ -23,6 +21,7 @@ export default function Main() {
                 title={item.name}
                 url={item.background_image}
                 score={item.metacritic}
+                slug={item.slug}
               />
             )}
             keyExtractor={(item) => item.slug}

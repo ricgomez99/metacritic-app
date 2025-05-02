@@ -9,7 +9,7 @@ export default function Score({ score, maxScore }: ScoreProps) {
   return (
     <View
       // eslint-disable-next-line prettier/prettier
-      className={`${scoreColor} w-8 h-8 justify-center items-center rounded-full`}>
+      className={`${scoreColor} my-2 w-8 h-8 justify-center items-center rounded-full`}>
       <Text className="text-md font-bold text-white">{roundedScore}</Text>
     </View>
   );
