@@ -1,45 +1,10 @@
-import { StyleSheet, FlatList } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import useFilms from "../hooks/useFilms";
-import Loader from "./Loader";
-import { AnimatedCard } from "./AnimatedCard";
+import Screen from "./Screen";
+import GamesWrapper from "./GamesWrapper";
 
 export default function Main() {
-  const films = useFilms();
-
   return (
-    <>
-      {!films?.length ? (
-        <Loader />
-      ) : (
-        <SafeAreaView style={styles.container}>
-          <FlatList
-            data={films}
-            renderItem={({ item, index }) => (
-              <AnimatedCard
-                index={index}
-                title={item.name}
-                url={item.background_image}
-                score={item.metacritic}
-                slug={item.slug}
-              />
-            )}
-            keyExtractor={(item) => item.slug}
-          />
-        </SafeAreaView>
-      )}
-    </>
+    <Screen>
+      <GamesWrapper />
+    </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    justifyContent: "center",
-  },
-
-  title: {
-    color: "#111",
-  },
-});

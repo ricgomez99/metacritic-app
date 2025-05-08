@@ -1,17 +1,34 @@
 import { View, Text } from "react-native";
-import { Link } from "expo-router";
+import { Link, Stack, useLocalSearchParams } from "expo-router";
+import Screen from "../components/Screen";
+import useDataContext from "../hooks/context/useDataContext";
 
 export default function Details() {
+  const { id } = useLocalSearchParams();
+  const { getGameBySlug } = useDataContext();
+  const selectedGame = getGameBySlug(id);
+  const headerTitle = selectedGame?.name;
+
   return (
-    <View className="flex-1 justify-center items-center">
+    <Screen>
+      <Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: "#e1e1e1" },
+          headerTintColor: "black",
+          headerLeft: () => (
+            <Link href="/" className="text-blue-500">
+              Volver
+            </Link>
+          ),
+          headerRight: () => <></>,
+          headerTitle: `${headerTitle}`,
+        }}
+      />
       <View>
         <Text className="mb-8 font-semibold text-2xl text-slate-500">
-          Details
+          {selectedGame?.name}
         </Text>
-        <Link href="/" className="text-blue-500">
-          Volver
-        </Link>
       </View>
-    </View>
+    </Screen>
   );
 }

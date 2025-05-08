@@ -5,7 +5,7 @@ export const fetchFilms = async () => {
   try {
     const url = process.env.EXPO_PUBLIC_API_URL;
     const { data } = await axios.get(`${url}`);
-    const films: FilmType[] = data.results.map((item: any) => ({
+    const films = data.results.map((item: FilmType) => ({
       id: item.id,
       slug: item.slug,
       name: item.name,
@@ -18,6 +18,7 @@ export const fetchFilms = async () => {
       metacritic: item.metacritic,
       playtime: item.playtime,
     }));
+
     return films;
   } catch (error) {
     if (error instanceof AxiosError) {
