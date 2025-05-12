@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { fetchFilms } from "../lib/fetchFilms";
-import { FilmType } from "../types/filmTypes";
+import useDataContext from "./context/useDataContext";
 
 export default function useFilms() {
-  const [films, setFilms] = useState<FilmType[]>();
+  const { saveGameData, getGamesData } = useDataContext();
+  const films = getGamesData();
+
   const getFilms = async () => {
     const data = await fetchFilms();
-    setFilms(data);
+    saveGameData(data);
   };
 
   useEffect(() => {

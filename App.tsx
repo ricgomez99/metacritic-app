@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Main from "./components/Main";
+import "./global.css";
 
 export default function App() {
   return (
@@ -16,7 +17,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexShrink: 1,
+    flexGrow: 0,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
